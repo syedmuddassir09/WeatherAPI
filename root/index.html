@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>WeatherNow</title>
+
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+```
+<main class="app">
+
+    <section class="weather-card">
+
+        <div class="weather-icon" id="weatherIcon">
+            ☁️
+        </div>
+
+        <h1>WeatherNow</h1>
+
+        <p class="subtitle">
+            Check the current weather anywhere
+        </p>
+
+        <form id="weatherForm">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Enter city name"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">
+                    Search
+                </button>
+
+            </div>
+
+        </form>
+
+        <p id="loading" class="loading hidden">
+            Checking weather...
+        </p>
+
+        <p id="error" class="error hidden"></p>
+
+        <section id="weatherResult" class="weather-result hidden">
+
+            <h2 id="cityName">City</h2>
+
+            <p id="countryName" class="country">
+                Country
+            </p>
+
+            <div class="temperature">
+                <span id="temperature">--</span>°C
+            </div>
+
+            <p id="condition" class="condition">
+                Weather condition
+            </p>
+
+            <div class="weather-details">
+
+                <div class="detail">
+
+                    <span class="detail-icon">🌡️</span>
+
+                    <p>Feels Like</p>
+
+                    <strong id="feelsLike">
+                        --°C
+                    </strong>
+
+                </div>
+
+                <div class="detail">
+
+                    <span class="detail-icon">💧</span>
+
+                    <p>Humidity</p>
+
+                    <strong id="humidity">
+                        --%
+                    </strong>
+
+                </div>
+
+                <div class="detail">
+
+                    <span class="detail-icon">💨</span>
+
+                    <p>Wind</p>
+
+                    <strong id="wind">
+                        -- km/h
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <p class="updated">
+                Last updated: <span id="updated">--</span>
+            </p>
+
+        </section>
+
+        <footer>
+            Powered by WeatherAPI.com
+        </footer>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+```
+
+</body>
+
+</html>
