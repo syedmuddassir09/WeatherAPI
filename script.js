@@ -40,160 +40,150 @@ document.getElementById("updated");
 
 form.addEventListener("submit", async function (event) {
 
-```
-event.preventDefault();
+    event.preventDefault();
 
-const city = cityInput.value.trim();
+    const city = cityInput.value.trim();
 
-if (!city) {
-    showError("Please enter a city name.");
-    return;
-}
-
-hideError();
-
-weatherResult.classList.add("hidden");
-
-loading.classList.remove("hidden");
-
-try {
-
-    const url =
-        `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(city)}&aqi=no`;
-
-    const response = await fetch(url);
-
-    const data = await response.json();
-
-    if (!response.ok) {
-
-        throw new Error(
-            data.error?.message ||
-            "Unable to find the city."
-        );
+    if (!city) {
+        showError("Please enter a city name.");
+        return;
     }
 
-    displayWeather(data);
+    hideError();
 
-} catch (err) {
+    weatherResult.classList.add("hidden");
 
-    showError(
-        err.message ||
-        "Something went wrong. Please try again."
-    );
+    loading.classList.remove("hidden");
 
-} finally {
+    try {
 
-    loading.classList.add("hidden");
+        const url =
+            `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(city)}&aqi=no`;
 
-}
-```
+        const response = await fetch(url);
+
+        const data = await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error?.message ||
+                "Unable to find the city."
+            );
+        }
+
+        displayWeather(data);
+
+    } catch (err) {
+
+        showError(
+            err.message ||
+            "Something went wrong. Please try again."
+        );
+
+    } finally {
+
+        loading.classList.add("hidden");
+
+    }
 
 });
 
 function displayWeather(data) {
 
-```
-const location = data.location;
+    const location = data.location;
 
-const current = data.current;
+    const current = data.current;
 
-cityName.textContent =
-    location.name;
+    cityName.textContent =
+        location.name;
 
-countryName.textContent =
-    location.country;
+    countryName.textContent =
+        location.country;
 
-temperature.textContent =
-    Math.round(current.temp_c);
+    temperature.textContent =
+        Math.round(current.temp_c);
 
-condition.textContent =
-    current.condition.text;
+    condition.textContent =
+        current.condition.text;
 
-feelsLike.textContent =
-    `${Math.round(current.feelslike_c)}°C`;
+    feelsLike.textContent =
+        `${Math.round(current.feelslike_c)}°C`;
 
-humidity.textContent =
-    `${current.humidity}%`;
+    humidity.textContent =
+        `${current.humidity}%`;
 
-wind.textContent =
-    `${current.wind_kph} km/h`;
+    wind.textContent =
+        `${current.wind_kph} km/h`;
 
-updated.textContent =
-    current.last_updated;
+    updated.textContent =
+        current.last_updated;
 
-weatherIcon.textContent =
-    getWeatherIcon(current.condition.text);
+    weatherIcon.textContent =
+        getWeatherIcon(current.condition.text);
 
-weatherResult.classList.remove("hidden");
-```
+    weatherResult.classList.remove("hidden");
 
 }
 
 function getWeatherIcon(condition) {
 
-```
-const text = condition.toLowerCase();
+    const text = condition.toLowerCase();
 
-if (
-    text.includes("sunny") ||
-    text.includes("clear")
-) {
-    return "☀️";
-}
+    if (
+        text.includes("sunny") ||
+        text.includes("clear")
+    ) {
+        return "☀️";
+    }
 
-if (
-    text.includes("cloud") ||
-    text.includes("overcast")
-) {
-    return "☁️";
-}
+    if (
+        text.includes("cloud") ||
+        text.includes("overcast")
+    ) {
+        return "☁️";
+    }
 
-if (
-    text.includes("rain") ||
-    text.includes("drizzle")
-) {
-    return "🌧️";
-}
+    if (
+        text.includes("rain") ||
+        text.includes("drizzle")
+    ) {
+        return "🌧️";
+    }
 
-if (
-    text.includes("thunder")
-) {
-    return "⛈️";
-}
+    if (
+        text.includes("thunder")
+    ) {
+        return "⛈️";
+    }
 
-if (
-    text.includes("snow")
-) {
-    return "❄️";
-}
+    if (
+        text.includes("snow")
+    ) {
+        return "❄️";
+    }
 
-if (
-    text.includes("mist") ||
-    text.includes("fog")
-) {
-    return "🌫️";
-}
+    if (
+        text.includes("mist") ||
+        text.includes("fog")
+    ) {
+        return "🌫️";
+    }
 
-return "🌤️";
-```
+    return "🌤️";
 
 }
 
 function showError(message) {
 
-```
-error.textContent = message;
+    error.textContent = message;
 
-error.classList.remove("hidden");
-```
+    error.classList.remove("hidden");
 
 }
 
 function hideError() {
 
-```
-error.classList.add("hidden");
-```
+    error.classList.add("hidden");
 
 }
