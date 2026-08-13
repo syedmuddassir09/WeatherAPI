@@ -1,5 +1,7 @@
 # 🌦️ WeatherAPI
 
+https://syedmuddassir09.github.io/WeatherAPI/
+
 A simple and responsive **Weather Application** built using **HTML, CSS, and JavaScript**.
 
 The application uses a weather API to fetch real-time weather information based on the location entered by the user.
